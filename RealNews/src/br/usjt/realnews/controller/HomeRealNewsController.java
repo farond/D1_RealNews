@@ -9,11 +9,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import br.usjt.realnews.model.Comentario;
 import br.usjt.realnews.model.Noticia;
-import br.usjt.realnews.service.ComentarioService;
 import br.usjt.realnews.service.NoticiaService;
 
 
@@ -23,7 +20,7 @@ public class HomeRealNewsController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	 private final NoticiaService noticiaService = new NoticiaService();
-	 private final ComentarioService comentarioService = new ComentarioService();     
+	 //private final ComentarioService comentarioService = new ComentarioService();     
 	 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {			
@@ -31,8 +28,10 @@ public class HomeRealNewsController extends HttpServlet {
 		List<Noticia> noticias = noticiaService.listarNoticias();
 		PrintWriter saida = response.getWriter();
 		response.getWriter().println("<a href='listaNoticias.do'>Home Admin</a>");
-
-		saida.println("<h1>Noticias:</h1>");
+		
+		
+		saida.println("<h1>REAL NEWS</h1>");
+		saida.println("<h2>Noticias:</h2>");
 		if (noticias.isEmpty()) {
 			saida.println("<p>Não Há Noticias</p>");
 		} else {
@@ -51,17 +50,17 @@ public class HomeRealNewsController extends HttpServlet {
 		//response.setContentType("text/html");  
 		//PrintWriter out= response.getWriter();
 		
-		HttpSession sessao= request.getSession();
-		int fk_noticia_id = (Integer) sessao.getAttribute("fk");		
+		//HttpSession sessao= request.getSession();
+		//int fk_noticia_id = (Integer) sessao.getAttribute("fk");		
 		
-		Comentario comentario =  new Comentario();
-		comentario.setNome(request.getParameter("nome"));
-		comentario.setComentario(request.getParameter("comentario"));	
-		comentario.setIdNoticia(fk_noticia_id);
+		//Comentario comentario =  new Comentario();
+		//comentario.setNome(request.getParameter("nome"));
+		//comentario.setComentario(request.getParameter("comentario"));	
+		//comentario.setIdNoticia(fk_noticia_id);
 
-		comentarioService.inserir(comentario);
+		//comentarioService.inserir(comentario);
 		
-		response.sendRedirect("homeRealNews.do");
+		//response.sendRedirect("homeRealNews.do");
 		
 		 
 	}

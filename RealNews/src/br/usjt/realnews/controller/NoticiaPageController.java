@@ -49,7 +49,7 @@ public class NoticiaPageController extends HttpServlet {
 		if (!resultado.isValid()) {
 			saida.println("<h1>Noticia não encontrada.</h1>");
 		} else {
-			saida.println("<h2>RealNews<h2>");
+			saida.println("<h1>RealNews<h1>");
 			saida.println("<hr>");
 			saida.println("<h1>" + resultado.getTitulo() + "</h1>");
 			saida.println("<h3>" + resultado.getDescricao() + "</h3>");
@@ -70,7 +70,7 @@ public class NoticiaPageController extends HttpServlet {
 				}
 			}
 
-			saida.println("<form method='post'>");
+			saida.println("<form method='post'");
 			saida.println("<label>Adicionar comentário:</label>");
 			saida.println("<br>");
 			saida.println("<input type='hidden' name='idNoticia' value='" + id + "'>");
@@ -92,6 +92,7 @@ public class NoticiaPageController extends HttpServlet {
 				parameterIdNoticia = request.getParameter("idNoticia") != null && !request.getParameter("idNoticia").isEmpty()
 						? request.getParameter("idNoticia")
 								: "-1";
+						
 		int idNoticia = Integer.parseInt(parameterIdNoticia);
 
 		Comentario comentario = new Comentario();
